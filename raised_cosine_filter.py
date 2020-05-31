@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from ipywidgets import interact
 
 #Mathematic expression's
 def raisedCosineFilter(f,beta,sample_rate):
@@ -53,7 +54,6 @@ def plot_filter(band_width,beta,sample_rate):
   plt.ylabel('Amplitude')
   plt.show()
 
-band_width = 75000
-beta = 0.5
-sample_rate = 10000
-plot_filter(band_width,beta,sample_rate)
+@interact(band_width= (30000,100000,5000), beta=(0,1,0.1),sample_rate = (5000,20000,1000))
+def call(band_width,beta,sample_rate):
+  plot_filter(band_width,beta,sample_rate)
