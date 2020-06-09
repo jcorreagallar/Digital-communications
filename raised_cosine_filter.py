@@ -37,8 +37,10 @@ def impulseResponse(t,beta,sample_rate):
   T = 1/sample_rate
 
   try:
-    t == T/(2*beta)
-    return np.pi/(4*T) * np.sinc(1/(2*beta))
+    if t == T/(2*beta):
+      return np.pi/(4*T) * np.sinc(1/(2*beta))
+    else:
+      return (1/T) * np.sinc(t/T) * np.cos(np.pi*beta*t/T)/(1-(2*beta*t/T)**2)
   except:
     return (1/T) * np.sinc(t/T) * np.cos(np.pi*beta*t/T)/(1-(2*beta*t/T)**2)
                                                   
