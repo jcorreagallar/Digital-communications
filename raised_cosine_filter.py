@@ -28,7 +28,7 @@ def raisedCosineFilter(f,beta,sample_rate):
  
   if f <= (1-beta)/(2*T):
     return 1
-  if f > (1-beta)/(2*T) and f <= (1+beta)/(2*T):
+  elif f > (1-beta)/(2*T) and f <= (1+beta)/(2*T):
     return 1/2 * (1 + np.cos((np.pi*T/beta) * (f - (1-beta)/(2*T))))
   else:
     return 0 
